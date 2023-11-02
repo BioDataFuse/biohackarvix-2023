@@ -2,9 +2,9 @@
 title: 'BioHackEU23 report: Extending interoperability of experimental data using modular queries across biomedical resources'
 title_short: 'BioHackEU23 #17: unknown chemical substances'
 tags:
-  - cheminformatics
-  - PubChem
-  - unknown chemical substances
+  - Knowledge Graph
+  - Modular query
+  - Biomedical database
 authors:
   - name: First Author
     affiliation: 1
