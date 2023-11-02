@@ -52,8 +52,8 @@ about genes. The first method (`get_gene_literature`) returns the PubMed and Wik
 encoded protein as main subject. The second method (`get_gene_cellular_component`) returns the Wikidata identifier and
 label of the cellular component as well as its Gene Ontology term.
 
-Technically, the annotator runs a SPARQL query against the Wikidata Query Service. Genes and proteins are found based
-on the NBCI Gene identifier.
+Technically, the annotator runs a SPARQL query against the [Wikidata Query Service](https://query.wikidata.org/). Genes and proteins are found based
+on the NBCI Gene identifier. It takes advantage of earlier work to include genes and proteins to Wikidata [@usedDataFrom:Waagmeester2020Wikidata].
 
 ## Bgee annotator
 
