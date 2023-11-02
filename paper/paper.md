@@ -11,6 +11,9 @@ authors:
   - name: Egon Willighagen
     orcid: 0000-0001-7542-0286
     affiliation: 2
+  - name: Ana Claudia Sima
+    orcid: 0000-0003-3213-4495
+    affiliation: 3
   - name: Last Author
     orcid: 0000-0000-0000-0000
     affiliation: 3
@@ -19,7 +22,7 @@ affiliations:
     index: 1
   - name: Dept of Bioinformatics - BiGCaT, NUTRIM, FHML, Maastricht University
     index: 2
-  - name: Last Affiliation
+  - name: SIB Swiss Institute of Bioinformatics
     index: 3
 date: 2 November 2023
 cito-bibliography: paper.bib
@@ -116,6 +119,10 @@ label of the cellular component as well as its Gene Ontology term.
 
 Technically, the annotator runs a SPARQL query against the Wikidata Query Service. Genes and proteins are found based
 on the NBCI Gene identifier.
+
+## Bgee annotator
+
+An annotator for Bgee was developed. It supports retrieving the expression level score and confidence from the Bgee SPARQL endpoint for a given set of genes and anatomical entities where the genes might be expressed. The SPARQL endpoint is queried using Ensembl identifiers for genes and the anatomical entity names in plain text.
 
 # Discussion
 
