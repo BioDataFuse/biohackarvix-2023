@@ -8,23 +8,28 @@ tags:
 authors:
   - name: First Author
     affiliation: 1
+  - name: Egon Willighagen
+    orcid: 0000-0001-7542-0286
+    affiliation: 2
   - name: Last Author
     orcid: 0000-0000-0000-0000
-    affiliation: 2
+    affiliation: 3
 affiliations:
   - name: First Affiliation
     index: 1
-  - name: Second Affiliation
+  - name: Dept of Bioinformatics - BiGCaT, NUTRIM, FHML, Maastricht University
     index: 2
+  - name: Last Affiliation
+    index: 3
 date: 2 November 2023
 cito-bibliography: paper.bib
 event: BH23EU
 biohackathon_name: "BioHackathon Europe 2023"
 biohackathon_url:   "https://biohackathon-europe.org/"
 biohackathon_location: "Barcelona, Spain, 2023"
-group: Project 26
+group: Project 17
 # URL to project git repo --- should contain the actual paper.md:
-git_url: https://github.com/biohackrxiv/publication-template
+git_url: https://github.com/BioDataFuse/biohackarvix-2023/
 # This is the short authors description that is used at the
 # bottom of the generated paper (typically the first two authors):
 authors_short: First Author \emph{et al.}
@@ -102,6 +107,15 @@ Possible CiTO typing annotation include:
 
 # Results
 
+## Wikidata annotator
+
+A annotator for Wikidata has been developed. It support extraction of literature and cellular components information
+about genes. The first method (`get_gene_literature`) returns the PubMed and Wikidata identifiers for the article that has the gene or
+encoded protein as main subject. The second method (`get_gene_cellular_component`) returns the Wikidata identifier and
+label of the cellular component as well as its Gene Ontology term.
+
+Technically, the annotator runs a SPARQL query against the Wikidata Query Service. Genes and proteins are found based
+on the NBCI Gene identifier.
 
 # Discussion
 
