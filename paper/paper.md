@@ -62,7 +62,7 @@ on the NBCI Gene identifier. It takes advantage of earlier work to include genes
 
 ## Bgee annotator
 
-An annotator for Bgee was developed. It supports retrieving the expression level score and confidence from the Bgee SPARQL endpoint for a given set of genes and anatomical entities where the genes might be expressed. The SPARQL endpoint is queried using Ensembl identifiers for genes and the anatomical entity names in plain text.
+An annotator for Bgee was developed. It supports retrieving the expression level score and confidence from the [Bgee SPARQL endpoint](https://www.bgee.org/resources/sparql) for a given set of genes and anatomical entities where the genes might be expressed. The SPARQL endpoint is queried using Ensembl identifiers for genes and the anatomical entity names in plain text.
 
 ## MolMeDB annotator
 An annotator for MolMeDB was developed. It supports extraction of information on transporter inhibitors.
@@ -79,6 +79,13 @@ There is still potentiall for it to return multiple rows with duplicate identifi
 
 ## TODO PubChem annotator
 PubChem annotator will be implemented in the few days from BioHackathon 2023 ending.
+
+## Graph analysis
+The data queried through the annotators is collected in a networkx MultiDiGraph, which is a graph that allows multiple edges between nodes. In the BioHackathon a few simple graph analysis methods have been explored, for example computing the gene associated with the most diseases (the max out degree node in the gene-disease subgraph).
+
+A more generic implementation has been added to iterate through all edge types, which can be useful in order to generate e.g. specific analyses or visualizations depending on the type of connection between nodes (e.g. visualizing protein-protein interaction networks).
+
+Finally, two simple use cases were explored for community detection on the STRING interaction subgraph and for link prediction on the gene - disease subgraph. However, the simple link prediction method used, based on [Jaccard coefficients](https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.link_prediction.jaccard_coefficient.html#networkx.algorithms.link_prediction.jaccard_coefficient), requires an undirected graph, meaning it is not suitable for the gene-disease use case. In particular, the method predicts associations between different diseases, as opposed to gene - disease predictions. Therefore, as future work, a method specific to bipartite graphs should instead be investigated. An example to be further explored can be found [here](https://github.com/bi-graph/Bigraph). Futhermore, experiments with larger datasets would be required in the future.
 
 # Discussion
 
