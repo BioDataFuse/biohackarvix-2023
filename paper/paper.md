@@ -48,7 +48,11 @@ authors_short: First Author \emph{et al.}
 
 As part of the BioHackathon Europe 2023, we here report...
 
-# Results
+# Methods
+
+BridgeDb ... [@usesMethodIn:Willighagen2022BridgeDb] ...
+
+# Annotators
 
 ## Wikidata annotator
 
@@ -58,14 +62,14 @@ encoded protein as main subject. The second method (`get_gene_cellular_component
 label of the cellular component as well as its Gene Ontology term.
 
 Technically, the annotator runs a SPARQL query against the [Wikidata Query Service](https://query.wikidata.org/). Genes and proteins are found based
-on the NBCI Gene identifier. It takes advantage of earlier work to include genes and proteins to Wikidata [@usedDataFrom:Waagmeester2020Wikidata].
+on the NBCI Gene identifier. It takes advantage of earlier work to include genes and proteins to Wikidata [@usesDataFrom:Waagmeester2020Wikidata].
 
 ## Bgee annotator
 
 An annotator for Bgee was developed. It supports retrieving the expression level score and confidence from the [Bgee SPARQL endpoint](https://www.bgee.org/resources/sparql) for a given set of genes and anatomical entities where the genes might be expressed. The SPARQL endpoint is queried using Ensembl identifiers for genes and the anatomical entity names in plain text.
 
 ## MolMeDB annotator
-An annotator for MolMeDB was developed. It supports extraction of information on transporter inhibitors.
+An annotator for MolMeDB was developed [@usesDataFrom:Juracka2019MolMeDB]. It supports extraction of information on transporter inhibitors.
 
 First method (`get_gene_mol_inhibitor`) takes gene or protein identifiers as an input and outputs inhibitors. Inhibitor is described by name, SMILES, InChIKey and external identifiers (Pubchem Compound, ChEMBL Compound, ChEBI, DrugBank, MolMeDB molecule) where applicable. Part of output is DOI and PMID identifier for data source.
 
@@ -74,13 +78,13 @@ Second method (`get_mol_gene_inhibitor`) takes metabolite identifier as an input
 Annotator uses [IDSM](https://idsm.elixir-czech.cz/) service to query MolMeDB SPARQL endpoint.
 
 ## collapse_data_sources method fix
-There was an issue when in case of one-to-many mappings in BridgeDB (eg. HGCN to Uniprot TrEMBL) (`collapse_data_sources`) returned multiple rows in a dataframe for single queried identifier. After the fix the method drops rows wiht duplicate identifiers and and response body. It also drops rows with duplicate identifier and empty response body.
+There was an issue when in case of one-to-many mappings in BridgeDb (eg. HGCN to UniProt TrEMBL) (`collapse_data_sources`) returned multiple rows in a dataframe for single queried identifier. After the fix the method drops rows wiht duplicate identifiers and and response body. It also drops rows with duplicate identifier and empty response body.
 There is still potentiall for it to return multiple rows with duplicate identifiers and non-duplicate non-empty response body. This issue have not been seen while testing, but it will need to be solved in the future.
 
 ## TODO PubChem annotator
 PubChem annotator will be implemented in the few days from BioHackathon 2023 ending.
 
-## Graph analysis
+# Graph analysis
 The data queried through the annotators is collected in a networkx MultiDiGraph, which is a graph that allows multiple edges between nodes. In the BioHackathon a few simple graph analysis methods have been explored, for example computing the gene associated with the most diseases (the max out degree node in the gene-disease subgraph).
 
 A more generic implementation has been added to iterate through all edge types, which can be useful in order to generate e.g. specific analyses or visualizations depending on the type of connection between nodes (e.g. visualizing protein-protein interaction networks).
@@ -93,6 +97,6 @@ Finally, two simple use cases were explored for community detection on the STRIN
 
 ## Acknowledgements
 
-...
+This work was supported by ELIXIR, the research infrastructure for life-science data.
 
 ## References
