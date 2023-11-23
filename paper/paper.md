@@ -55,7 +55,11 @@ Firstly, part of the team set out to explore new data sources, subsequently crea
 
 **WRITE A BIT MORE TEXT ON** the ultimate goal of making pyBioDataFuse a comprehensive toolkit for exploring, analyzing, and visualizing biomedical data across diverse biomedical resources + interoperability + modularity.
 
-# Results
+# Methods
+
+BridgeDb ... [@usesMethodIn:Willighagen2022BridgeDb] ...
+
+# Annotators
 
 ## Wikidata annotator
 
@@ -72,7 +76,7 @@ on the NBCI Gene identifier. It takes advantage of earlier work to include genes
 An annotator for Bgee [@usesDataFrom:Bastian2020] was developed. It supports retrieving the expression level score and confidence from the [Bgee SPARQL endpoint](https://www.bgee.org/resources/sparql) for a given set of genes and anatomical entities where the genes might be expressed. The SPARQL endpoint is queried using Ensembl identifiers for genes and the anatomical entity names in plain text.
 
 ## MolMeDB annotator
-An annotator for MolMeDB [@usesDataFrom:Juraka2019] was developed. It supports extraction of information on transporter inhibitors.
+An annotator for MolMeDB was developed [@usesDataFrom:Juracka2019MolMeDB]. It supports extraction of information on transporter inhibitors.
 
 First method (`get_gene_mol_inhibitor`) takes gene or protein identifiers as an input and outputs inhibitors. Inhibitor is described by name, SMILES, InChIKey and external identifiers (Pubchem Compound, ChEMBL Compound, ChEBI, DrugBank, MolMeDB molecule) where applicable. Part of output is DOI and PMID identifier for data source.
 
@@ -81,7 +85,7 @@ Second method (`get_mol_gene_inhibitor`) takes metabolite identifier as an input
 Annotator uses [IDSM](https://idsm.elixir-czech.cz/) service to query MolMeDB SPARQL endpoint.
 
 ## collapse_data_sources method fix
-There was an issue when in case of one-to-many mappings in BridgeDB (eg. HGCN to Uniprot TrEMBL) (`collapse_data_sources`) returned multiple rows in a dataframe for single queried identifier. After the fix the method drops rows wiht duplicate identifiers and and response body. It also drops rows with duplicate identifier and empty response body.
+There was an issue when in case of one-to-many mappings in BridgeDb (eg. HGCN to UniProt TrEMBL) (`collapse_data_sources`) returned multiple rows in a dataframe for single queried identifier. After the fix the method drops rows wiht duplicate identifiers and and response body. It also drops rows with duplicate identifier and empty response body.
 There is still potentiall for it to return multiple rows with duplicate identifiers and non-duplicate non-empty response body. This issue have not been seen while testing, but it will need to be solved in the future.
 
 ## TODO PubChem annotator
@@ -121,6 +125,6 @@ Finally, two simple use cases were explored for community detection on the STRIN
 
 ## Acknowledgements
 
-...
+This work was supported by ELIXIR, the research infrastructure for life-science data.
 
 ## References
