@@ -7,8 +7,10 @@ tags:
   - Biomedical database
 authors:
   - name: Tooba Abbassi-Daloii
+    orcid: 0000-0002-4904-3269
     affiliation: 2
   - name: Yojana Gadiya
+    orchid: 0000-0002-7683-0452
     affiliation: 1
   - name: Ammar Ammar
     orcid: 0000-0002-8399-8990
@@ -69,9 +71,7 @@ The BioDataFuse include four main components:
 
 ## Data Harmonizer
 
-BridgeDb ... [@usesMethodIn:Willighagen2022BridgeDb] ...
-
-
+As part of the plan for the hacking week, pyBiodatafuse was extended to support not only a list of genes but also a list of metabolites and the output of differential expression analysis. Since different biomedical data sources support different unique persistent identifiers, the input list is mapped to different types of identifiers using BridgeDb framework [@usesMethodIn:vanIersel2010BridgeDb].
 
 ## Data Annotators
 
