@@ -79,8 +79,7 @@ During the hackathon, we built a larger number of biomedical data annotators tha
 
 ### Wikidata annotator
 
-A annotator for Wikidata was developed. It support extraction of literature and cellular components information
-about genes. The first method (`get_gene_literature`) returns the PubMed and Wikidata identifiers for the article that has the gene or encoded protein as main subject. The second method (`get_gene_cellular_component`) returns the Wikidata identifier and label of the cellular component as well as its Gene Ontology term.
+A annotator for Wikidata was developed. It support extraction of literature and cellular components information about genes. The first method (`get_gene_literature`) returns the PubMed and Wikidata identifiers for the article that has the gene or encoded protein as main subject. The second method (`get_gene_cellular_component`) returns the Wikidata identifier and label of the cellular component as well as its Gene Ontology term.
 
 Technically, the annotator runs a SPARQL query against the [Wikidata Query Service](https://query.wikidata.org/). Genes and proteins are found based on the NBCI Gene identifier. It takes advantage of earlier work to include genes and proteins to Wikidata [@usesDataFrom:Waagmeester2020Wikidata].
 
@@ -104,11 +103,12 @@ There is still potentiall for it to return multiple rows with duplicate identifi
 
 ### Opentargets annotator
 
-A annotator for OpenTargets was developed [@usesDataFrom:Ochoa2022]. It support extraction of genes relevant information including its tractability, its involved in different biological pathways, the diseases it is prominent correlated with, as well as the drug targets. The annotator is built on the [GraphQL API](https://platform-docs.opentargets.org/data-access/graphql-api) of OpenTargets that leverages quick and efficient reterival of data.
+An annotator for OpenTargets was developed [@usesDataFrom:Ochoa2022]. It supports extraction of genes relevant information including its tractability, its involved in different biological pathways, the diseases it is prominent correlated with, as well as the drug targets. The annotator is built on the [GraphQL API](https://platform-docs.opentargets.org/data-access/graphql-api) of OpenTargets that leverages quick and efficient reterival of data.
 
 All the functions take a list of genes mapped by BridgeDb to Ensembl identifiers.
 
 ### DisGeNET annotator
+An annotator for DisGeNET [@usesDataFrom:QueraltRosinach2016DisGeNETRDF] was developed. It supports retrieving the disease associations from [DisGeNET API](https://www.disgenet.org/api/#/gene) for a given set of genes. The API is queried using Entrez Gene.
 
 ### WikiPathways annotator
 
