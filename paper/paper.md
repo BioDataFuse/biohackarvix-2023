@@ -6,10 +6,13 @@ tags:
   - Modular query
   - Biomedical database
 authors:
-  - name: First Author
-    affiliation: 1
+  - name: Tooba Abbassi-Daloii
+    affiliation: 2
   - name: Yojana Gadiya
     affiliation: 1
+  - name: Ammar Ammar
+    orcid: 0000-0002-8399-8990
+    affiliation: 2
   - name: Egon Willighagen
     orcid: 0000-0001-7542-0286
     affiliation: 2
@@ -19,9 +22,6 @@ authors:
   - name: Dominik Martinat
     orcid: 0000-0001-6611-7883
     affiliation: 4
-  - name: Ammar Ammar
-    orcid: 0000-0002-8399-8990
-    affiliation: 2
   - name: Last Author
     orcid: 0000-0000-0000-0000
     affiliation: 3
@@ -51,37 +51,44 @@ authors_short: First Author \emph{et al.}
 
 # Introduction
 
-As part of the Biohackathon Europe 2023 in Barcelona, Spain, a dedicated team of seven participants collaborated on Project 17, titled "Extending interoperability of experimental data using modular queries across biomedical resources". 
+As part of the Biohackathon Europe 2023 in Barcelona, Spain, a dedicated team of seven participants collaborated on Project 17, titled "Extending interoperability of experimental data using modular queries across biomedical resources".
+Within this project, the team developed a tool named BioDataFuse to seamlessly integrate data resources on-the-fly, establish a modular framework for data wrangling, create context-specific knowledge graphs, apply the WYSIWYG approach, allowing users to choose their desired data sources, and support graph-based analysis. This tool comprises of a Python package (pyBiodatafuse), serving as the back end supporting various tool functionalities, and a user interface acting as the front end.
+This project was multifaceted and  and throughout the hacking week, our objectives were to address four key acpects to advance the capabilities of the pyBiodatafuse package. Firstly, part of the team set out to explore new data sources, subsequently creating annotator modules that adhered to the established structure within the pyBiodatafuse package. These annotators sought to enhance the package's capabilities by integrating diverse and valuable biomedical data sources.
+The second major goal of the project was to devise a robust mechanism for transforming the resulting data frame from the annotation phase into a graph data structure. This intermediary step was carefully designed to be Python-native, enabling flexible programmable filtering and manipulation of the graph. Simultaneously, the graph structure was envisioned to be serializable into other formats compatible with third-party software, specifically, Cytoscape and Neo4j. This design aimed to achieve a balance between the flexibility of Python-native manipulation and the robust visualization and analytical capabilities offered by widely-used platforms like Cytoscape [@usesMethodIn:Shannon2003] and Neo4j [@usesMethodIn:noauthororeditorneo4j]. 
+Furthermore, the team's third objective was to extend the capabilities of pyBiodatafuse with visualization functions, leveraging the Matplotlib [@usesMethodIn:Hunter2007] Python package. Lastly, the team aimed to support more types of input, including metabolite and the output of differential expression analysis. While at the beginning, only a list of genes can be accepted as input.
 
-This project was multifaceted, aiming to address three key objectives in order to advance the capabilities of the pyBioDatafuse package. Firstly, part of the team set out to explore new data sources, subsequently creating annotator modules that adhered to the established structure within the pyBioDatafuse package. These annotators sought to enhance the package's capabilities by integrating diverse and valuable data sources. The second major goal of the project was to devise a robust mechanism for transforming the resulting data frame from the annotation phase into a graph data structure. This intermediary step was carefully designed to be Python-native, enabling flexible programmable filtering and manipulation of the graph. Simultaneously, the graph structure was envisioned to be serializable into other formats compatible with third-party software, specifically, Cytoscape and Neo4j. This design aimed to achieve a balance between the flexibility of Python-native manipulation and the robust visualization and analytical capabilities offered by widely-used platforms like Cytoscape [@usesMethodIn:Shannon2003] and Neo4j [@usesMethodIn:noauthororeditorneo4j]. Furthermore, the team's third objective was to extend the capabilities of pyBioDataFuse with visualization functions, leveraging the Matplotlib [@usesMethodIn:Hunter2007] Python package. 
+The ultimate goal of the BioDataFuse project is to evolve into a comprehensive toolkit that empowers users to explore, interpret, and visualize biomedical data seamlessly across a myriad of diverse biomedical resources. By fostering interoperability, BioDataFuse ensures that users can effortlessly navigate and extract meaningful insights from a wide array of biomedical resources.
 
-**WRITE A BIT MORE TEXT ON** the ultimate goal of making pyBioDataFuse a comprehensive toolkit for exploring, analyzing, and visualizing biomedical data across diverse biomedical resources + interoperability + modularity.
+# BioDataFuse framework
 
-# pyBioDatafuse framework
+The BioDataFuse include four main components:
+1. Data Harmonizer
+2. Data Annotators
+3. Graph Generaror
+4. Graph Analyzer 
 
-# Data Harmonizers
+## Data Harmonizer
 
 BridgeDb ... [@usesMethodIn:Willighagen2022BridgeDb] ...
 
-There was an issue when in case of one-to-many mappings in BridgeDb (eg. HGCN to UniProt TrEMBL) (`collapse_data_sources`) returned multiple rows in a dataframe for single queried identifier. After the fix the method drops rows wiht duplicate identifiers and and response body. It also drops rows with duplicate identifier and empty response body.
-There is still potentiall for it to return multiple rows with duplicate identifiers and non-duplicate non-empty response body. This issue have not been seen while testing, but it will need to be solved in the future.
 
-# Data Annotators
+
+## Data Annotators
 
 During the hackathon, we built a larger number of biomedical data annotators that allowed for performing modular queries simulatenouly from the these resources. Below we provide a detailed overview on the data annotators we developed along with their capabilities:
 
-## Wikidata annotator
+### Wikidata annotator
 
 A annotator for Wikidata was developed. It support extraction of literature and cellular components information
 about genes. The first method (`get_gene_literature`) returns the PubMed and Wikidata identifiers for the article that has the gene or encoded protein as main subject. The second method (`get_gene_cellular_component`) returns the Wikidata identifier and label of the cellular component as well as its Gene Ontology term.
 
 Technically, the annotator runs a SPARQL query against the [Wikidata Query Service](https://query.wikidata.org/). Genes and proteins are found based on the NBCI Gene identifier. It takes advantage of earlier work to include genes and proteins to Wikidata [@usesDataFrom:Waagmeester2020Wikidata].
 
-## Bgee annotator
+### Bgee annotator
 
 An annotator for Bgee [@usesDataFrom:Bastian2020] was developed. It supports retrieving the expression level score and confidence from the [Bgee SPARQL endpoint](https://www.bgee.org/resources/sparql) for a given set of genes and anatomical entities where the genes might be expressed. The SPARQL endpoint is queried using Ensembl identifiers for genes and the anatomical entity names in plain text.
 
-## MolMeDB annotator
+### MolMeDB annotator
 An annotator for MolMeDB was developed [@usesDataFrom:Juracka2019MolMeDB]. It supports extraction of information on transporter inhibitors.
 
 First method (`get_gene_mol_inhibitor`) takes gene or protein identifiers as an input and outputs inhibitors. Inhibitor is described by name, SMILES, InChIKey and external identifiers (Pubchem Compound, ChEMBL Compound, ChEBI, DrugBank, MolMeDB molecule) where applicable. Part of output is DOI and PMID identifier for data source.
@@ -90,19 +97,28 @@ Second method (`get_mol_gene_inhibitor`) takes metabolite identifier as an input
 
 Annotator uses [IDSM](https://idsm.elixir-czech.cz/) service to query MolMeDB SPARQL endpoint.
 
+@DominikMartinat the text below should be rephrased as it is now implemented in the annotator itself, true?
 
-## Opentargets annotator
+There was an issue when in case of one-to-many mappings in BridgeDb (eg. HGCN to UniProt TrEMBL) (`collapse_data_sources`) returned multiple rows in a dataframe for single queried identifier. After the fix the method drops rows wiht duplicate identifiers and and response body. It also drops rows with duplicate identifier and empty response body.
+There is still potentiall for it to return multiple rows with duplicate identifiers and non-duplicate non-empty response body. This issue have not been seen while testing, but it will need to be solved in the future.
+
+### Opentargets annotator
 
 A annotator for OpenTargets was developed [@usesDataFrom:Ochoa2022]. It support extraction of genes relevant information including its tractability, its involved in different biological pathways, the diseases it is prominent correlated with, as well as the drug targets. The annotator is built on the [GraphQL API](https://platform-docs.opentargets.org/data-access/graphql-api) of OpenTargets that leverages quick and efficient reterival of data.
 
 All the functions take a list of genes mapped by BridgeDb to Ensembl identifiers.
 
+### DisGeNET annotator
 
-# Graph generators
+### WikiPathways annotator
+
+### STRING annotator
+
+## Graph generator
 
 Add basic text
 
-## Knowledge graph construction
+### Knowledge graph construction
 
 A Python module was developed to create a graph data structure from a data frame that contains information about genes and their annotations from various biomedical sources. The resulting graph is constructed using the NetworkX [@usesMethodIn:SciPyProceedings_11] library in Python and can be exported for visualization in tools like Cytoscape or Neo4J.
 
@@ -116,13 +132,10 @@ A specific module was developed to export the NetworkX graph to GraphML and load
 
 
 
-![The pyBioDatafuse knowledge graph model \label{fig-graph-model}](./figures/pybiodatafuse-graph.png)
+![The pyBiodatafuse knowledge graph model \label{fig-graph-model}](./figures/pybiodatafuse-graph.png)
 
 
-
-
-
-## Graph analysis
+## Graph Analyzer
 
 The data queried through the annotators is collected in a networkx MultiDiGraph, which is a graph that allows multiple edges between nodes. In the BioHackathon a few simple graph analysis methods have been explored, for example computing the gene associated with the most diseases (the max out degree node in the gene-disease subgraph).
 
@@ -143,7 +156,7 @@ The following are the planned future directions of the work:
 
 # Contributions to the package
 
-We invite contributions to parsing and adding relevant annotators or analysis to pyBioDatafuse package. Simply do a pull request on https://github.com/BioDataFuse/pyBiodatafuse. 
+We invite contributions to parsing and adding relevant annotators or analysis to pyBiodatafuse package. Simply do a pull request on https://github.com/BioDataFuse/pyBiodatafuse. 
 
 
 ## Acknowledgements
