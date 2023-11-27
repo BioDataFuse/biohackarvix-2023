@@ -112,7 +112,7 @@ An annotator for DisGeNET [@usesDataFrom:QueraltRosinach2016DisGeNETRDF] was dev
 
 ### WikiPathways annotator
 
-### STRING annotator
+### StringDB annotator
 
 ## Graph generator
 
