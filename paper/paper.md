@@ -146,13 +146,19 @@ Finally, two simple use cases were explored for community detection on the STRIN
 ## Future work
 
 The following are the planned future directions of the work:
-* Addition of annotator from drug databses liked Pubchem and ChEMBL
-* Connection of larger data repositories like those hosted in the Database Center for Life Science (DBCLS) into the current package
-* Release of a final version of the package at PyPi with the above descibed annotators
+* Supporing more type of input data (e.g. gene co-expression data);
+* Addition of annotator from drug databses liked Pubchem and ChEMBL;
+* Connection of larger data repositories like those hosted in the Database Center for Life Science (DBCLS) into the current package;
+* Release of a final version of the package at PyPi with the above descibed annotators;
+* The current user interface is Streamlit, but to improve its functionality, we will use Shiny or Dash.
 
 # Discussion
 
-...
+During the BioHackathon, our team accomplished significant milestones with BioDataFuse. The tool now accommodates additional input types and incorporates a more extensive range of biomedical data sources. The creation of context-specific knowledge graphs is a notable achievement, and these graphs can be visualized in both Cytoscape and Neo4j, enhancing accessibility and usability.
+
+However, in terms of the graph analyzer component, there are areas that still require attention. We recognize the importance of refining and expanding this aspect of the tool. Through successful collaborations initiated during the Biohackathon, we aim to improve not only the graph analyzer but also other components by implementing the workflow on specific use cases. This collaborative effort is pivotal in addressing the remaining tasks and ensuring the comprehensive functionality of BioDataFuse.
+
+In addition, the user interface requires additional refinement. We are planning to transition away from Streamlit and explore alternative tools such as Dash to enhance functionality and user experience.
 
 # Contributions to the package
 
