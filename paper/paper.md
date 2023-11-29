@@ -37,7 +37,7 @@ affiliations:
   - name: Dept of Physical Chemistry, Faculty of Science, Palacky University Olomouc, CZ
     index: 4
   - name: Maastricht Centre for Systems Biology (MaCSBio), Maastricht University, The Netherlands
-    index: 5 
+    index: 5
 date: 2 November 2023
 cito-bibliography: paper.bib
 event: BH23EU
@@ -105,7 +105,7 @@ In the following subsections, we provide a detailed overview of the integrated d
 
 ### Wikidata annotator
 
-[Wikidata](https://www.wikidata.org/) is a structured data resource benefitted by cross sourced curation by individuals and expert. In the context of biology, it support extraction of literature and cellular components information about genes [@usesDataFrom:Waagmeester2020Wikidata]. 
+[Wikidata](https://www.wikidata.org/) is a structured data resource benefitted by cross sourced curation by individuals and expert. In the context of biology, it support extraction of literature and cellular components information about genes [@usesDataFrom:Waagmeester2020Wikidata].
 
 Technically, we execute a SPARQL query against the [Wikidata Query Service](https://query.wikidata.org/) using the [NCBI Gene](https://www.ncbi.nlm.nih.gov/gene) identifier for genes and proteins of interest. Two methods have been added for data retrieval: the first, `get_gene_literature()`, provides the [PubMed](https://pubmed.ncbi.nlm.nih.gov/) and Wikidata identifiers for the article that has the gene or encoded protein as the main subject. The second, `get_gene_cellular_component()`, returns the Wikidata identifier and label of the cellular component along with its corresponding [Gene Ontology GO](https://geneontology.org/) term.
 
