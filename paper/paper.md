@@ -98,7 +98,7 @@ Annotator uses [IDSM](https://idsm.elixir-czech.cz/) service to query MolMeDB SP
 
 @DominikMartinat the text below should be rephrased as it is now implemented in the annotator itself, true?
 
-There was an issue when in case of one-to-many mappings in BridgeDb (eg. HGCN to UniProt TrEMBL) (`collapse_data_sources`) returned multiple rows in a dataframe for single queried identifier. After the fix the method drops rows wiht duplicate identifiers and and response body. It also drops rows with duplicate identifier and empty response body.
+There was an issue when in case of one-to-many mappings in BridgeDb (eg. HGCN to UniProt TrEMBL) MolMeDB annotators returned multiple rows in a dataframe for single queried identifier. After the fix the method drops rows wiht duplicate identifiers and and response body. It also drops rows with duplicate identifier and empty response body.
 There is still potentiall for it to return multiple rows with duplicate identifiers and non-duplicate non-empty response body. This issue have not been seen while testing, but it will need to be solved in the future.
 
 ### Opentargets annotator
