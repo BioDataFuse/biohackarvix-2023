@@ -147,17 +147,13 @@ Thus, the resource allows for annotation of genetically related diseases for the
 
 Apart from Reactome and GO databases, another popular resource for pathways is [WikiPathways](https://www.wikipathways.org/). It is an open, collaborative platform that provides a community-driven approach to curating and disseminating biological pathways [@usesDataFram:Agrawal2023WikiPathways].
 
-- [ ] Add annotator para
-
-- [ ] Add what this add to the pipeline
+The Wikipathways annotator implements a main function that queries the WikiPathways SPARQL endpoint for pathways related to a set of input genes (Ensembl/NCBI gene identifiers). It prepares the gene list, constructs SPARQL queries using predefined templates, and executes them in batches for efficiency. The results are collected in a list of DataFrames and later merged to create a full output DataFrame. The query return the pathway ID, label, and the number of genes in the pathway. Moreover, the code creates a metadata dictionary which records the start and end times for calculating the elapsed time and includes metadata such as the WikiPathways version, the size of the queried gene list, and the date and time of the query. The final result consists of both the merged DataFrame containing WikiPathways information and a metadata dictionary. This resource allows for annotating genes with related pathway information that are expressed in the output knowledge graph as (gene part-of pathway) interactions and allows for filtering the pathways based on their metadata.
 
 ### STRING annotator
 
 [Search Tool for the Retrieval of Interacting Genes/Proteins (STRING)](https://string-db.org/) is a bioinformatics database and web resource that focuses on the exploration and analysis of protein-protein interactions (PPIs) [@usesDataFrom:Szklarczyk2023stringdb]. It collections this information based on functional associations between proteins, complementing the genetic association.
 
-- [ ] Add annotator para
-
-- [ ] Add what this add to the pipeline
+The core of this annotator lies in the `get_ppi()` function. It starts by preparing the API call based on the input list of genes. Subsequently, it leverages the STRING API to obtain STRING identifiers corresponding to the input genes. These identifiers are then used to fetch the protein-protein interaction network from the API. To format the obtained interaction data appropriately, the `_format_data()` helper function is employed. It organizes the interaction details for each gene, ensuring a clear representation in the resulting DataFrame. The annotated data, now enriched with protein-protein interaction information, is returned along with metadata. The metadata includes details such as the size of the queried gene list, query execution time, and the date of the query. Notably, it also includes the version information of the STRING API obtained through the `get_version_stringdb()` function.
 
 ## Graph generator
 
