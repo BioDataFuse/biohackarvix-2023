@@ -52,9 +52,10 @@ git_url: https://github.com/BioDataFuse/biohackarvix-2023/
 authors_short: Abbassi-Daloii, T., Gadiya, Y. \emph{et al.}
 ---
 
-#### corresponding authors: t.abbassidaloii\@maastrichtuniversity.nl and Yojana.Gadiya\@itmp.fraunhofer.de
 
-#### These authors contributed equally to this work
+#### corresponding authors: t.abbassidaloii\@maastrichtuniversity.nl and yojana.gadiya\@itmp.fraunhofer.de
+
+#### * These authors contributed equally to this work
 
 # Introduction
 
