@@ -185,8 +185,6 @@ Additionally, a more generic network-specific summary was also incorporated. Thi
 
 To ensure the smooth operation of all functions outlined in the previous sections and to detect any functional failures, we implemented test scripts for each resource. These test scripts guarantee a stable connection between resources for query. Additionally, testing has been integrated into our [GitHub Actions](https://docs.github.com/en/actions/using-workflows), enabling automated connectivity tests with all annotators each time a push is made to the main repository. This provides an efficient way to identify and address any potential connection issues.
 
-During the initial testing of the resources, we identified cases of one-to-many mappings for genes in BridgeDb (e.g., from HGNC to UniProt TrEMBL). We promptly raised this issue with the BridgeDB developers, who are also co-authors of this paper/project, and it is currently being investigated for resolution.
-
 ## User interface
 
 In the front end, a user interface developed using [Streamlit](https://streamlit.io/). Users can input a list of genes, specify the type of identifier for those genes, and then select data sources to annotate the input list. After querying the chosen databases, users can download a TSV file with columns associated with each data source and a metadata file containing information about the version of the queried data sources, input and query details, and the time taken to complete each query, all in a JSON format. If the Cytoscape app is running on the user's end, the generated graph will be imported there (usning  library) and can also be visualized in Cytoscape.
