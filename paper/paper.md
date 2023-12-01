@@ -9,6 +9,7 @@ authors:
   - name: Yojana Gadiya
     orchid: 0000-0002-7683-0452
     affiliation: 1
+    altaffiliation: These authors contributed equally to this work
   - name: Ammar Ammar
     orcid: 0000-0002-8399-8990
     affiliation: 2
@@ -27,6 +28,8 @@ authors:
   - name: Tooba Abbassi-Daloii
     orcid: 0000-0002-4904-3269
     affiliation: 2
+    altaffiliation: These authors contributed equally to this work
+
 affiliations:
   - name: Fraunhofer Institute for Translational Medicine and Pharmacology, Germany
     index: 1
@@ -52,6 +55,7 @@ git_url: https://github.com/BioDataFuse/biohackarvix-2023/
 authors_short: Abbassi-Daloii, T., Gadiya, Y. \emph{et al.}
 ---
 
+#### corresponding authors: t.abbassidaloii\@maastrichtuniversity.nl and Yojana.Gadiya\@itmp.fraunhofer.de
 
 # Introduction
 
@@ -59,15 +63,15 @@ As part of Biohackathon Europe 2023 in Barcelona, Spain, a dedicated team of sev
 
 During the biohackathon, we developed a tool named **BioDataFuse** to seamlessly integrate data resources on the fly, thus establishing a modular framework for data wrangling. By following the what-you-see-is-what-you-get (WYSIWYG) convention, BioDataFuse enables users to choose "how" the graph is built based on strategic decisions regarding the data sources of interest. Thus, it creates context-specific knowledge graphs around the user data.
 
-The tool consists of a backend and a front-end framework. The backend comprises a Python package, namely [pyBioDataFuse](https://pypi.org/project/pyBiodatafuse/), which assists in supporting various tool functionalities, whereas the user interface acts as the front-end, enhancing the tool's utility for non-programers.
+The tool consists of a backend and a front-end framework. The backend comprises a Python package, namely [pyBiodatafuse](https://pypi.org/project/pyBiodatafuse/), which assists in supporting various tool functionalities, whereas the user interface acts as the front-end, enhancing the tool's utility for non-programers.
 
 # Goals for the biohackathon
 
 This project was multifaceted, and our objectives were to address the following four key aspects to advance the capabilities of *BioDataFuse*.
 
-1. **Extending data resources**: Part of the team set out to explore new data sources, subsequently creating annotator modules that adhered to the established structure within the *pyBioDataFuse* package. These annotators sought to enhance the package's capabilities by integrating diverse and valuable biomedical data sources.
+1. **Extending data resources**: Part of the team set out to explore new data sources, subsequently creating annotator modules that adhered to the established structure within the *pyBiodatafuse* package. These annotators sought to enhance the package's capabilities by integrating diverse and valuable biomedical data sources.
 2. **Generation of knowledge graphs**: The second major goal of the project was to devise a robust mechanism for transforming the collected data from the annotation phase into a graph data structure. This intermediary step was carefully designed to be Python-native, enabling flexible programmable filtering and manipulation of the graph. This design aimed to achieve a balance between the flexibility of Python-native manipulation and the robust visualization and analytical capabilities offered by widely-used platforms like [Cytoscape](https://cytoscape.org/) [@usesMethodIn:Shannon2003] and [Neo4j](https://neo4j.com/) [@usesMethodIn:noauthororeditorneo4j].
-3. **Data visualization**: Acknowledging the ability of graphical representation of data, we wanted to extend the capabilities of *pyBioDataFuse* with visualization functions for a quick summary of the underlying graph data.
+3. **Data visualization**: Acknowledging the ability of graphical representation of data, we wanted to extend the capabilities of *pyBiodatafuse* with visualization functions for a quick summary of the underlying graph data.
 4. **Use case based pipeline**: We wanted to build an end-to-end pipeline to test and support more types of input for the tool, including, but not limited to, metabolites, and the output table of the differential expression analysis.
 
 The ultimate goal of the *BioDataFuse* project is to evolve into a comprehensive toolkit that empowers users to explore, interpret, and visualize biomedical data seamlessly across a myriad of diverse biomedical resources. By fostering interoperability, *BioDataFuse* ensures that users can effortlessly navigate and extract meaningful insights from their context-specific biomedical graph.
@@ -87,7 +91,7 @@ Based on our goals described in the previous section, we built *BioDataFuse* on 
 
 Adhering to the FAIR principles, the tool emphasizes the necessity of unique persistent identifiers for diverse biomedical modalities such as genes, chemicals, diseases, etc. Consistent mapping of these entities is achieved through the utilization of the [BridgeDb framework](https://www.bridgedb.org/) [@usesMethodIn:vanIersel2010BridgeDb].
 
-Moreover, we expanded the capabilities *pyBioDataFuse* to support not only a list of genes as input but also a list of metabolites and the output table of the differential expression analysis. 
+Moreover, we expanded the capabilities *pyBiodatafuse* to support not only a list of genes as input but also a list of metabolites and the output table of the differential expression analysis. 
 
 The harmonizer step works as the basis for biological entity grounding and mapping and servers as input for the data annotators, as shown in Figure \ref{fig-framework}.
 
@@ -161,9 +165,9 @@ The graph generator plays a fundamental role in creating the knowledge graph (KG
 
 ### Schema of the graph
 
-We developed a Python module in *pyBioDataFuse* (`class pyBiodatafuse.graph()`) to construct a graph data structure from the aggregate data (Figure \ref{fig-graph-model}). This module, leveraging the [NetworkX](https://networkx.org/) [@usesMethodIn:SciPyProceedings_11] library, generates the graph and seamlessly exports it to Cytoscape and Neo4j for visualization. Within the KG, nodes represent distinct biological entities such as genes, diseases, drugs, and pathways. Each node is enriched with attributes (metadata), providing details about its origin. For example, gene nodes include information about the gene's source, identifiers, and associated attributes. The edges connecting the nodes signify diverse interactions and associations, encompassing gene-disease relationships, gene-pathway connections, and gene-drug interactions. Edge nomenclature adheres to the RDF format, ensuring a structured representation for a comprehensive understanding of the complex interplay between different biomedical elements.
+We developed a Python module in *pyBiodatafuse* (`class pyBiodatafuse.graph()`) to construct a graph data structure from the aggregate data (Figure \ref{fig-graph-model}). This module, leveraging the [NetworkX](https://networkx.org/) [@usesMethodIn:SciPyProceedings_11] library, generates the graph and seamlessly exports it to Cytoscape and Neo4j for visualization. Within the KG, nodes represent distinct biological entities such as genes, diseases, drugs, and pathways. Each node is enriched with attributes (metadata), providing details about its origin. For example, gene nodes include information about the gene's source, identifiers, and associated attributes. The edges connecting the nodes signify diverse interactions and associations, encompassing gene-disease relationships, gene-pathway connections, and gene-drug interactions. Edge nomenclature adheres to the RDF format, ensuring a structured representation for a comprehensive understanding of the complex interplay between different biomedical elements.
 
-![The pyBioDataFuse graph schema \label{fig-graph-model}](./figures/pybiodatafuse-graph.png)
+![The BioDataFuse graph schema \label{fig-graph-model}](./figures/pybiodatafuse-graph.png)
 
 ### Input-output (IO) dynamics for the graph
 
@@ -187,7 +191,7 @@ During the initial testing of the resources, we identified cases of one-to-many 
 
 In the front end, a user interface developed using [Streamlit](https://streamlit.io/). Users can input a list of genes, specify the type of identifier for those genes, and then select data sources to annotate the input list. After querying the chosen databases, users can download a TSV file with columns associated with each data source and a metadata file containing information about the version of the queried data sources, input and query details, and the time taken to complete each query, all in a JSON format. If the Cytoscape app is running on the user's end, the generated graph will be imported there (usning  library) and can also be visualized in Cytoscape.
 
-However, during the hackathon, a decision was made to transition away from Streamlit and explore other frameworks such as [Shiny](https://shiny.posit.co/). Consequently, updates and developments in pyBioDataFuse, utilized in the backend, have not been implemented in the Streamlit app.
+However, during the hackathon, a decision was made to transition away from Streamlit and explore other frameworks such as [Shiny](https://shiny.posit.co/). Consequently, updates and developments in pyBiodatafuse, utilized in the backend, have not been implemented in the Streamlit app.
 
 ## Future work
 
@@ -196,7 +200,7 @@ The following are the planned future directions of the work:
 - Supporting more types of input data (e.g., gene co-expression data).
 - Addition of annotators from drug databases like [PubChem](https://pubchem.ncbi.nlm.nih.gov/) and [ChEMBL](https://www.ebi.ac.uk/chembl/).
 - Connection to larger data repositories like those hosted in the [Database Center for Life Science (DBCLS)](https://dbcls.rois.ac.jp/index-en.html) into *BioDataFuse*.
-- Continuous updating and versioning of [*pyBioDataFuse*](https://pypi.org/project/pyBiodatafuse/) at PyPi with the above-described annotators.
+- Continuous updating and versioning of [*pyBiodatafuse*](https://pypi.org/project/pyBiodatafuse/) at PyPi with the above-described annotators.
 - The current user interface is based on Streamlit, but to enhance its functionality, we would migrate towards [Shiny](https://shiny.posit.co/) or [Dash](https://plotly.com/dash/) frameworks.
 - Adapt the live loading of graph onto Cytoscape similar to the approach used in Neo4j.
 
