@@ -6,10 +6,9 @@ tags:
   - Modular query
   - Biomedical data source
 authors:
-  - name: Yojana Gadiya
+  - name: Yojana Gadiya*
     orchid: 0000-0002-7683-0452
     affiliation: 1
-    altaffiliation: These authors contributed equally to this work
   - name: Ammar Ammar
     orcid: 0000-0002-8399-8990
     affiliation: 2
@@ -25,11 +24,9 @@ authors:
   - name: Hasan Balci
     orcid: 0000-0001-8319-7758
     affiliation: 5
-  - name: Tooba Abbassi-Daloii
+  - name: Tooba Abbassi-Daloii*
     orcid: 0000-0002-4904-3269
     affiliation: 2
-    altaffiliation: These authors contributed equally to this work
-
 affiliations:
   - name: Fraunhofer Institute for Translational Medicine and Pharmacology, Germany
     index: 1
@@ -56,6 +53,8 @@ authors_short: Abbassi-Daloii, T., Gadiya, Y. \emph{et al.}
 ---
 
 #### corresponding authors: t.abbassidaloii\@maastrichtuniversity.nl and Yojana.Gadiya\@itmp.fraunhofer.de
+
+#### These authors contributed equally to this work
 
 # Introduction
 
