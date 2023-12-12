@@ -113,7 +113,7 @@ Thus, this annotator allows us to gather scientific publications and information
 
 ### Bgee annotator
 
-[DataBase Gene Expression Evolution (Bgee)](https://www.bgee.org/) is a gene expression data resource that captures and collects data from multiple organisms, with a focus on vertebrates [@usesDataFrom:Bastian2020]. All data collected in the resource are curated by experts, adding confidence to the underlying data.
+[DataBase for Gene Expression Evolution (Bgee)](https://www.bgee.org/) is a gene expression data resource that captures and collects data from multiple organisms, with a focus on vertebrates [@usesDataFrom:Bastian2020]. All data collected in the resource are curated by experts, adding confidence to the underlying data.
 
 The annotator supports the retrieval of expression level scores and confidence (via the `get_gene_expression()` function) from the [Bgee SPARQL endpoint](https://www.bgee.org/resources/sparql) for a given set of genes and anatomical entities where the genes might be expressed. To perform the SPARQL query, [Ensembl](https://www.ensembl.org/index.html) identifiers for genes and anatomical entities are used.
 
